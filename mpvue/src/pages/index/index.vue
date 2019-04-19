@@ -1,126 +1,108 @@
 <template>
-  <div @click="clickHandle">
+<div class="wrap">
+<!-- 首页地图模块 -->
+  <map
+  id="map"
+  longitude="116.300278"
+  latitude="40.040848"
+  :markers="markers"
+  scale="17"
+  style="width: 100%; height: 800px;"
+></map>
+ <!-- 重新定位图标 -->
+    <cover-view class="current">
+      <cover-image class="location" @tap="goCurrent" src="/static/images/location.png" />
+      <button class="add" @tap="goAdd">添加面试</button>
+      <cover-view class="my" @tap="goMy">
+        <cover-image src="/static/images/ren.png" />
+      </cover-view>
+    </cover-view>
+</div>
+  
 
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
-
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
-    </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" :value="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-
-    <div class="all">
-        <div class="left">
-        </div>
-        <div class="right">
-        </div>
-    </div>
-  </div>
 </template>
 
 <script>
-import card from '@/components/card'
-
 export default {
-  data () {
+  data() {
     return {
-      motto: 'Hello miniprograme',
-      userInfo: {
-        nickName: 'mpvue',
-        avatarUrl: 'http://mpvue.com/assets/logo.png'
-      }
-    }
+      markers: [
+        {
+          iconPath: "/static/images/location.jpg",
+          id: 0,
+          longitude: 116.300278,
+          latitude: 40.040848,
+          width: 30,
+          height: 30
+        }
+      ]
+    };
   },
 
-  components: {
-    card
-  },
+  components: {},
 
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
-      } else {
-        mpvue.navigateTo({ url })
-      }
+    goAdd() {
+      wx.navigateTo({
+        url: "/pages/Interview/main"
+      });
     },
-    clickHandle (ev) {
-      console.log('clickHandle:', ev)
-      // throw {message: 'custom test'}
+    goMy(){
+       wx.navigateTo({
+        url: "/pages/my/main"
+      });
     }
+
   },
 
-  created () {
-    // let app = getApp()
-  }
-}
+  created() {}
+};
 </script>
 
 <style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.wrap {
+  height: 100%;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+map {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+}
+.location {
+  position: fixed;
+  bottom: 160rpx;
+  width: 80rpx;
+  height: 80rpx;
+  left: 20rpx;
+}
+.add {
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  bottom: 0;
+  left: 0;
+  font-size: 40rpx;
+}
+.my {
+  position: fixed;
+  background: #fff;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  bottom: 150rpx;
+  width: 120rpx;
+  height: 100rpx;
+  right: 0;
+}
+.my cover-image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  background: #eee;
   border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-.all{
-  width:7.5rem;
-  height:1rem;
-  background-color:blue;
-}
-.all:after{
-  display:block;
-  content:'';
-  clear:both;
-}
-.left{
-  float:left;
-  width:3rem;
-  height:1rem;
-  background-color:red;
-}
-
-.right{
-  float:left;
-  width:4.5rem;
-  height:1rem;
-  background-color:green;
 }
 </style>

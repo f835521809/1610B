@@ -18,8 +18,6 @@
       </cover-view>
     </cover-view>
 </div>
-  
-
 </template>
 
 <script>
@@ -28,7 +26,7 @@ export default {
     return {
       markers: [
         {
-          iconPath: "/static/images/location.jpg",
+          iconPath: "/static/images/dingwei.png",
           id: 0,
           longitude: 116.300278,
           latitude: 40.040848,
@@ -42,17 +40,19 @@ export default {
   components: {},
 
   methods: {
-    goAdd() {
+    goAdd() {  //添加面试
       wx.navigateTo({
         url: "/pages/Interview/main"
       });
     },
-    goMy(){
+    goMy(){  //我的页面
        wx.navigateTo({
         url: "/pages/my/main"
       });
-    }
-
+    }, 
+    goCurrent(){   //重新定位
+   
+}
   },
 
   created() {}

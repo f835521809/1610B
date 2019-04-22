@@ -3,7 +3,9 @@
         "pages/index/main",
         "pages/counter/main",
         "pages/Interview/main",
-        "pages/my/main"
+        "pages/my/main",
+        "pages/adress/main",
+        "pages/list/main"
     ],
     "window": {
         "backgroundTextStyle": "light",

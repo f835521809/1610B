@@ -36,9 +36,7 @@ export default {
       ]
     };
   },
-
   components: {},
-
   methods: {
     goAdd() {  //添加面试
       wx.navigateTo({
@@ -54,7 +52,6 @@ export default {
    
 }
   },
-
   created() {}
 };
 </script>

@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/add/main",
+    "pages/my/main",
+    "pages/search/main",
+    "pages/list/main",
+    "pages/details/main"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+  }
+},
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}
